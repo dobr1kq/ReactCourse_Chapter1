@@ -4,12 +4,9 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  // Initial ToDo list state
   const [todos, setTodos] = useState([])
   const [title, setTitle] = useState('')
   const [search, setSearch] = useState('')
-
-  // Add a new ToDo item
   const addTodo = () => {
     if (title.trim() === '') return
 
@@ -19,16 +16,12 @@ function App() {
     }
 
     setTodos([...todos, newTodo])
-    setTitle('') // Clear input after adding
+    setTitle('')
   }
-
-  // Remove a ToDo item by id
   const removeTodo = (id) => {
     const updatedTodos = todos.filter((todo) => todo.id !== id)
     setTodos(updatedTodos)
   }
-
-  // Filtered ToDo list based on search input
   const filteredTodos = todos.filter((todo) =>
     todo.title.toLowerCase().includes(search.toLowerCase())
   )
@@ -36,8 +29,6 @@ function App() {
   return (
     <div className="App">
       <h1>My ToDo List</h1>
-
-      {/* Add ToDo Item */}
       <div>
         <input
           type="text"
@@ -47,8 +38,6 @@ function App() {
         />
         <button onClick={addTodo}>Add ToDo</button>
       </div>
-
-      {/* Search ToDo Item */}
       <div>
         <input
           type="text"
@@ -57,8 +46,6 @@ function App() {
           onChange={(e) => setSearch(e.target.value)}
         />
       </div>
-
-      {/* ToDo List */}
       <ul>
         {filteredTodos.length > 0 ? (
           filteredTodos.map((todo) => (
