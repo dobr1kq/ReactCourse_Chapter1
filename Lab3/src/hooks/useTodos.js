@@ -7,7 +7,7 @@ const useTodos = () => {
   const addTodo = (title) => {
     if (title.trim()) {
       const newTodo = {
-        id: Date.now().toString(),
+        id: Date.now(),
         title,
       }
       setTodos([...todos, newTodo])
