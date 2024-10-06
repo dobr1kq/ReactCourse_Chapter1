@@ -26,6 +26,13 @@ const useTodos = () => {
     todo.title.toLowerCase().includes(search.toLowerCase())
   )
 
+  const updateTodo = (id, newTitle) => {
+    const updatedTodos = todos.map((todo) =>
+      todo.id === id ? { ...todo, title: newTitle } : todo
+    );
+    setTodos(updatedTodos);
+  };
+  
   return {
     todos: filteredTodos,
     addTodo,
@@ -33,6 +40,7 @@ const useTodos = () => {
     handleSearch,
     search,
     setTodos,
+    updateTodo
   }
 }
 

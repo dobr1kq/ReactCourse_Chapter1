@@ -9,9 +9,9 @@ const useGetAllToDo = () => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        setIsLoading(true);
 
         const fetchData = async () => {
+            setIsLoading(true);
         try {
             fetch("https://jsonplaceholder.typicode.com/todos")
             .then(response => response.json())

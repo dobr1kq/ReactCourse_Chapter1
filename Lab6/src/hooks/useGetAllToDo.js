@@ -3,15 +3,15 @@ import useTodos from "./useTodos";
 
 
 const useGetAllToDo = () => {
-    const { todos, addTodo, removeTodo, handleSearch, setTodos, search } = useTodos();
+    const { todos, addTodo, removeTodo, handleSearch, setTodos, updateTodo, search } = useTodos();
 
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        setIsLoading(true);
 
         const fetchData = async () => {
+            setIsLoading(true);
         try {
             fetch("https://jsonplaceholder.typicode.com/todos")
             .then(response => response.json())
@@ -28,7 +28,7 @@ const useGetAllToDo = () => {
     fetchData();
     }, []);
 
-    return { isLoading, todos, error, addTodo, removeTodo, handleSearch, search };
+    return { isLoading, todos, error, addTodo, removeTodo, handleSearch, updateTodo, search };
 };
 
 export default useGetAllToDo;
